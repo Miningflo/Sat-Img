@@ -1,0 +1,9 @@
+tle:
+  -
+    source: https://celestrak.com/NORAD/elements/noaa.txt
+    sats:
+      - 25338
+      - 28654
+      - 33591
+frequency: "./frequencies.json"
+discord-webhook: "https://discord.com/api/webhooks/857251327508086835/s-GL09pVKk5iIq1y63ObnrEkh9nXApQcACSwDQOs4HlXz5hVwmQvz7X5dT6m7biPtiq-"
