@@ -53,7 +53,8 @@ def main():
             "name": x["satname"],
             "freq": x["freq"],
         }, pass_list))
-        # pp(pass_list)
+        pp(pass_list)
+        print("<--------------------------------->")
 
         nxt = pass_list[0]
         print(f"At {readable(nxt['start'])} {nxt['name']} will pass over until {readable(nxt['end'])}, frequency: {nxt['freq']} MHz")
