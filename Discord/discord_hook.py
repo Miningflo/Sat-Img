@@ -1,6 +1,6 @@
 import base64
 import json
-import config
+from config import config
 import requests
 
 
@@ -28,7 +28,7 @@ def create_payload(message_data):
     })
 
 
-hook = config.load()["discord-webhook"]
+hook = config.load("../config/config.yml")["discord-webhook"]
 image = base64.decodebytes(open('testimg.txt', 'rb').read())
 message = {
     "hook": hook,
