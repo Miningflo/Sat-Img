@@ -5,5 +5,13 @@ tle:
       - 25338
       - 28654
       - 33591
-frequency: "../config/frequencies.json"
+frequency: "./config/frequencies.json"
 discord-webhook: "https://discord.com/api/webhooks/857251327508086835/s-GL09pVKk5iIq1y63ObnrEkh9nXApQcACSwDQOs4HlXz5hVwmQvz7X5dT6m7biPtiq-"
+observer:
+  location:
+    lat: 51.043576
+    lon: 3.713768
+    alt: 20
+  opts:
+    days: 3
+    elev: 20

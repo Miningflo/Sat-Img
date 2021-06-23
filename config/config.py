@@ -1,6 +1,6 @@
 import yaml
 
-config = "../config/config.yml"
+config = "./config/config.yml"
 
 
 def load(cfg=config):
