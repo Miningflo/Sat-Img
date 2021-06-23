@@ -5,5 +5,5 @@ tle:
       - 25338
       - 28654
       - 33591
-frequency: "./frequencies.json"
+frequency: "../config/frequencies.json"
 discord-webhook: "https://discord.com/api/webhooks/857251327508086835/s-GL09pVKk5iIq1y63ObnrEkh9nXApQcACSwDQOs4HlXz5hVwmQvz7X5dT6m7biPtiq-"
