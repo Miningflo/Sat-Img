@@ -1,6 +1,4 @@
-import base64
 import json
-from config import config
 import requests
 
 
@@ -23,19 +21,22 @@ def create_payload(message_data):
                 "image": {
                     "url": "attachment://generic_name." + message_data["image_ext"]
                 },
+                "footer": {
+                    "text": f"\u200B\nNext pass: {message_data['next']} at {message_data['next_time']}",
+                },
             }
         ]
     })
 
 
-hook = config.load("../config/config.yml")["discord-webhook"]
-image = base64.decodebytes(open('testimg.txt', 'rb').read())
-message = {
-    "hook": hook,
-    "satname": "NOAA 18",
-    "time": "17:20",
-    "image_ext": "jpg",
-    "image_data": image
-}
-
-send_message(message)
+# hook = config.load("../config/config.yml")["discord-webhook"]
+# image = base64.decodebytes(open('testimg.txt', 'rb').read())
+# message = {
+#     "hook": hook,
+#     "satname": "NOAA 18",
+#     "time": "17:20",
+#     "image_ext": "jpg",
+#     "image_data": image
+# }
+#
+# send_message(message)
