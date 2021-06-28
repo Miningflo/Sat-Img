@@ -22,4 +22,4 @@ def resample(data, current_rate, target_rate):
 
 
 def filter(data):
-    return (data - np.min(data)) / (np.max(data) - np.min(data))
+    return (data - np.min(data)) / (np.max(data) - np.min(data)) * 255

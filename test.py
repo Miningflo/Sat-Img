@@ -1,19 +1,14 @@
 def full_test():
     from config import config
-    import requests
-    from SGP4.parser import readTle
     from SGP4.passes_api import passes_all
     from Discord.discord_hook import send_message
     from wx2img.utils import read_file
     from wx2img.imager import data_to_img, histogram, sample_steps
-    from utils import readable, timestamp
+    from utils import readable, timestamp, get_tle
 
     tle_sources = config.load()["tle"]
 
-    all_tle = []
-    for source in tle_sources:
-        response = requests.get(source["source"])
-        all_tle.extend(list(filter(lambda x: x.satnum in source["sats"], readTle(response.text))))
+    all_tle = get_tle(tle_sources["sats"], tle_sources["sources"]).values()
 
     observer = config.load()["observer"]
     pass_list = passes_all(all_tle, observer["location"], observer["opts"])[:2]
