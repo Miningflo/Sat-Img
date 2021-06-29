@@ -1,8 +1,6 @@
-import io
 import numpy as np
 from scipy.io import wavfile
 from scipy.signal import resample as rs
-import matplotlib.pyplot as plt
 
 
 def read_file(filename):
@@ -17,6 +15,7 @@ def pad_data(data, modulo):
 
 
 def resample(data, current_rate, target_rate):
+    # print(f"Sample rate cutoff, 0 expected: {len(data) % current_rate}")
     target_sample_count = len(data) // current_rate * target_rate
     return pad_data(rs(data, target_sample_count), target_rate)
 

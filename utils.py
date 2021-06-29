@@ -3,13 +3,9 @@ from SGP4.parser import readTle
 import requests
 
 
-def timestamp(unix):
+def readable(unix):
     unix = int(unix)
-    return datetime.datetime.fromtimestamp(unix)
-
-
-def readable(timestamp):
-    return timestamp.strftime('%Y-%m-%d %H:%M')
+    return datetime.datetime.fromtimestamp(unix).strftime('%Y-%m-%d %H:%M')
 
 
 def get_tle(sats, sources):

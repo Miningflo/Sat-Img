@@ -3,8 +3,8 @@ def full_test():
     from SGP4.passes_api import passes_all
     from Discord.discord_hook import send_message
     from wx2img.utils import read_file
-    from wx2img.imager import data_to_img, histogram, sample_steps
-    from utils import readable, timestamp, get_tle
+    from wx2img.imager import data_to_img, cutoff, sample_steps
+    from utils import readable, get_tle
 
     tle_sources = config.load()["tle"]
 
@@ -20,11 +20,11 @@ def full_test():
     message = {
         "hook": hook,
         "satname": pass_list[0]["satname"],
-        "time": readable(timestamp(pass_list[0]["maxUTC"])),
+        "time": readable(pass_list[0]["maxUTC"]),
         "image_ext": "png",
-        "image_data": data_to_img(histogram(sample_steps(data, samplerate))),
+        "image_data": data_to_img(cutoff(sample_steps(data, samplerate))),
         "next": pass_list[1]["satname"],
-        "next_time": readable(timestamp(pass_list[1]["maxUTC"]))
+        "next_time": readable(pass_list[1]["maxUTC"])
     }
 
     send_message(message)

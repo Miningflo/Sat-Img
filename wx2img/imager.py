@@ -1,4 +1,6 @@
 from wx2img.utils import *
+import io
+from matplotlib import pyplot as plt
 
 
 def sample_steps(data, samplerate):
@@ -57,18 +59,22 @@ def cutoff(data):
     return np.clip(data, 0, 255)
 
 
-def align(rows):
+def align(rows, factor):
+    for i, e in enumerate(rows):
+        rows[i] = np.roll(e, int(factor * i))
     return rows
 
 
 def data_to_img(data, ext="png"):
     # og size: 1040
     # good size: 1791
+    # width = 2388
     width = 2388
     rows = pad_data(data, width)
     rows = np.reshape(rows, (-1, width))
 
-    rows = align(rows)
+    # img1 -17/40
+    rows = align(rows, -3/4)
 
     plt.matshow(rows, cmap=plt.cm.gray)
     plt.axis('off')
@@ -79,8 +85,6 @@ def data_to_img(data, ext="png"):
     return buf
 
 
-input_file = "./test.wav"
+input_file = "./test3-1.wav"
 samplerate, data = read_file(input_file)
-data_to_img(sample_steps(data, samplerate))
 data_to_img(cutoff(sample_steps(data, samplerate)))
-data_to_img(histogram_normalise(sample_steps(data, samplerate)))
