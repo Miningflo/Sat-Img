@@ -75,13 +75,16 @@ def data_to_img(data, ext="png"):
 
     # img1 -17/40
     rows = align(rows, -3/4)
+    print(rows.shape)
 
-    plt.matshow(rows, cmap=plt.cm.gray)
+    plt.figure(figsize=tuple(reversed(rows.shape)), dpi=1, tight_layout=True)
+    plt.imshow(rows, cmap=plt.cm.gray, interpolation=None)
     plt.axis('off')
-    plt.show()
     buf = io.BytesIO()
-    plt.savefig(buf, format=ext, bbox_inches='tight', pad_inches=0)
+    # plt.savefig(buf, format=ext, bbox_inches='tight', pad_inches=0)
+    plt.savefig("test.png", format=ext, bbox_inches='tight', pad_inches=0, dpi=1)
     buf.seek(0)
+    plt.show()
     return buf
 
 

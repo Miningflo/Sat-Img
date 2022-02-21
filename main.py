@@ -4,7 +4,6 @@
 # pipe output to wx2img
 # send image to discord channel
 
-import time
 from pprint import pp
 
 import pause as pause
